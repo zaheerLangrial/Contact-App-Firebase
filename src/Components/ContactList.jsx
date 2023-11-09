@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../Config/Firebase";
 import ContactCard from "./ContactCard";
@@ -15,15 +15,16 @@ function ContactList(props) {
   const getContacts = async () => {
     try {
       const contactRef = collection(db, "contacts");
-      const contactsSnapShoots = await getDocs(contactRef);
-      const contactLists = contactsSnapShoots.docs.map((doc) => {
-        return {
-          id: doc.id,
-          ...doc.data(),
-        };
+      onSnapshot(contactRef, (snapShot) => {
+        const contactLists = snapShot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
+        setContacts(contactLists);
+        return contactLists;
       });
-      setContacts(contactLists);
-      console.log(contactLists);
     } catch (error) {
       console.log("Error agya e oye..", error);
     }
@@ -32,7 +33,7 @@ function ContactList(props) {
     <div className="px-3">
       <ul>
         {contacts.map((contact) => (
-          <ContactCard key={contact.id}  contactName={contact.name} contactEmail= {contact.email} />
+          <ContactCard key={contact.id} contact={contact} />
         ))}
       </ul>
     </div>

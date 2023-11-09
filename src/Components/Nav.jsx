@@ -2,7 +2,7 @@ import React from "react";
 import addButtonPic from "../assets/AddButtonIcon.svg";
 
 function Navbar(props) {
-    const {setMudal} = props
+  const { setMudal } = props;
   return (
     <div className=" w-full px-3">
       <div className=" px-5 py-3 rounded-xl mt-2 text-xl space-x-2 bg-white text-black flex justify-center items-center">
@@ -14,7 +14,7 @@ function Navbar(props) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_873_5330)">
+            <g clipPath="url(#clip0_873_5330)">
               <path
                 d="M0.5 24.1878L0.681453 23.9338L9.26299 7.65059L9.28111 7.47819L5.49829 0.372466C5.1812 -0.222748 4.28889 -0.0722348 4.18496 0.59409L0.5 24.1878Z"
                 fill="#FFC24A"
@@ -68,9 +68,9 @@ function Navbar(props) {
                 width="8.62891"
                 height="23.8829"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"
@@ -108,9 +108,9 @@ function Navbar(props) {
                 width="5.53127"
                 height="9.01498"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"
@@ -169,10 +169,17 @@ function Navbar(props) {
             />
           </svg>
 
-          <input placeholder="Search Contact" type="text" className=" bg-transparent text-white outline-none py-1 w-full"/>
+          <input
+            placeholder="Search Contact"
+            type="text"
+            className=" bg-transparent text-white outline-none py-1 w-full"
+          />
         </div>
-        <button className="rounded-full overflow-hidden bg-white" onClick={() => setMudal(true)}>
-          <img src={addButtonPic} width={50}/>
+        <button
+          className="rounded-full overflow-hidden bg-white"
+          onClick={() => setMudal(true)}
+        >
+          <img src={addButtonPic} width={50} />
         </button>
       </div>
     </div>
