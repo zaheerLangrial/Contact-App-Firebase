@@ -1,8 +1,24 @@
 import React from "react";
 import addButtonPic from "../assets/AddButtonIcon.svg";
+import { collection, doc, onSnapshot } from "firebase/firestore";
+import { db } from "../Config/Firebase";
 
 function Navbar(props) {
-  const { setMudal } = props;
+  const { setMudal , setContacts } = props;
+  const filterContacts = (e) => {
+    const inputValue  = e.target.value;
+    const contactRef = collection(db , 'contacts');
+    onSnapshot(contactRef , (snapShot) => {
+      const contactList = snapShot.docs.map((doc) => {
+        return {
+          id : doc.id,
+          ...doc.data(),
+        }
+      })
+      const filterContact = contactList.filter((contact) => contact.name.toLowerCase().includes(inputValue.toLowerCase()))
+      setContacts(filterContact)
+    })
+  }
   return (
     <div className=" w-full px-3">
       <div className=" px-5 py-3 rounded-xl mt-2 text-xl space-x-2 bg-white text-black flex justify-center items-center">
@@ -170,6 +186,7 @@ function Navbar(props) {
           </svg>
 
           <input
+          onChange={filterContacts}
             placeholder="Search Contact"
             type="text"
             className=" bg-transparent text-white outline-none py-1 w-full"

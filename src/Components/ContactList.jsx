@@ -4,9 +4,8 @@ import { db } from "../Config/Firebase";
 import ContactCard from "./ContactCard";
 
 function ContactList(props) {
-  const { setMudal } = props;
+  const { setMudal , setContacts , contacts } = props;
 
-  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     getContacts();

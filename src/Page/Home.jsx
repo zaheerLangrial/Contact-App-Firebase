@@ -5,10 +5,12 @@ import Mudal from "../Components/Mudal";
 
 function Home() {
   const [mudal, setMudal] = useState(false);
+  const [contacts, setContacts] = useState([]);
+
   return (
     <>
-      <Navbar mudal={mudal} setMudal={setMudal} />
-      <ContactList mudal={mudal} setMudal={setMudal} />
+      <Navbar mudal={mudal} setMudal={setMudal} setContacts={setContacts}/>
+      <ContactList mudal={mudal} setMudal={setMudal} setContacts={setContacts}  contacts={contacts} />
       <Mudal mudal={mudal} setMudal={setMudal} />
     </>
   );
